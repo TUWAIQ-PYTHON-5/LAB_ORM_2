@@ -1,0 +1,87 @@
+{% extends "main/base.html" %}
+
+{% block title %} Dooha Blog {% endblock %}
+
+{% block content %}
+
+
+
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">Our blog</h1>
+        <p class="lead my-3"> 
+            In our blog, you can view the available blogs and write your own blog</p>
+      </div>
+    </div>
+  
+
+    
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Business</strong>
+            <h3 class="mb-0">Business post</h3>
+            <div class="mb-1 text-muted">Nov 12</div>
+            <p class="card-text mb-auto">To read this post please press Continue reading.</p>
+            <a href="{% url 'main:business_page'%}" class="stretched-link">Continue reading</a>
+          </div>
+       
+        </div>
+      </div>
+      
+
+
+
+
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Design</strong>
+            <h3 class="mb-0">Post Design</h3>
+            <div class="mb-1 text-muted">Nov 11</div>
+            <p class="mb-auto">To read this post please press Continue reading.</p>
+            <a href="{% url 'main:design_page'%}" class="stretched-link">Continue reading</a>
+          </div>
+          
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    
+       
+    
+      </div>
+    </div>
+    
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+            Tuwaiq Academy
+        </h3>
+  
+        <article class="blog-post">
+          <h2 class="blog-post-title mb-1"> blog post</h2>
+          <p class="blog-post-meta">Feb 1, 2023 by <a href="#">Dooha Dajam</a></p>
+  
+          <p>Tuwaiq Academy is an educational institution based in the city of Riyadh. The Saudi Federation for Cybersecurity, Programming and Drones announced its establishment in August 2019, and it is based in Princess Noura bint Abdul Rahman University. Advanced Technologies is considered for advanced technologies in the Kingdom of Saudi Arabia, by offering a high level of training programs on advanced technologies and camps in programming, data science, data science, and space science in information technology areas, focusing on building capabilities and providing new experiences, skills development. Powering the job market with their engines.</p>
+          <hr>
+ 
+      
+    </div>
+  
+  </main>
+  
+  <footer class=" container blog-footer" >
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+
+
+  
+{% endblock %}
