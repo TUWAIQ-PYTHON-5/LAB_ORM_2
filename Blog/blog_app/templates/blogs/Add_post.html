@@ -1,0 +1,49 @@
+{% extends 'blogs/base.html' %}
+
+ {% block title %} Add a New Post {% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+
+  <form action="" method="POST" class="form-inline">
+        {% csrf_token %}
+
+
+    <label class="form-label"><h5>Title </h5></label>
+    <input type="text" name="title" class="form-control" />
+
+    <label class="form-label"><h5>Content</h5></label>
+    <textarea class="form-control" name="content"></textarea>
+    <br>
+
+    <div class="flex-md-row">
+
+        <div class="col">
+            <label class="form-label"><h5>Date</h5></label>
+            <input type="date" name="publish_date" />
+        </div>
+
+        <label>Is Published</label>
+        <select name="is_published" class="form-control">
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+        </select>
+        
+    </div>
+<br>
+
+    <div class="">
+        <input type="submit" class="btn btn-primary" value="New Post" />
+        <a class="btn btn-secondary" href="{% url 'blog:blogs_page' %}" role="button">Back</a>
+    </div>
+  </form>
+
+  
+</div>
+
+{% endblock %}

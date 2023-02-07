@@ -1,0 +1,36 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %} Details {% endblock title %}
+
+ {% block content   %}
+ 
+ <!-- {% for post in search_post %}
+ <div class="container">
+    <div class="col-3">
+        <div class="p-4 shadow" >
+            <a href="{% url 'blog:details_post' post.id %}"><h4>{{ post.title }}</h4></a>
+            <h6>Date: {{ post.publish_date }}</h6>
+            
+        </div>
+    </div>
+ </div> -->
+
+ {% if search_post %}
+    {% for post in search_post %} 
+       <div class="container">
+
+        <a href="{% url 'blog:details_post' post.id %}"><h4> {{ post.title }} </h4></a>
+            <h6> {{ post.publish_date}} </h6>
+            <hr>
+            <p><h5>{{post.content}}</h5> </p>
+
+            
+            <a class="btn btn-secondary" href="{% url 'blog:blogs_page' %}" role="button">Back</a>
+        </div>
+        
+    {% endfor %}
+    {% endif %}
+{% endfor %}
+{% endblock %}
+
+ 

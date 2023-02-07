@@ -1,0 +1,24 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %} Details {% endblock title %}
+
+ {% block content   %}
+ 
+ <div class="container">
+    
+   <h1>{{ details.title }}</h1>
+  <h6> {{ details.publish_date}} </h6>
+  <hr>
+  <p><h5>{{details.content}}</h5> </p>
+
+  <hr>
+  <div class="d-flex "><a href="{% url 'blog:post_update' details.id %}" class="btn btn-primary">update</a> &nbsp; <a href="{% url 'blog:post_delete' details.id %}" class="btn btn-danger">delete</a>
+    <a class="btn btn-secondary" href="{% url 'blog:blogs_page' %}" role="button">Back</a>
+  </div>
+
+
+
+ </div>
+ {% endblock %}
+
+ 
