@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="comtainer">
+    <div class="row">
+        <div class="col-3">
+            <div class="p-4 shadow" >
+{% if Search_new %}
+    {% for i in Search_title %}
+    
+            <h4> {{ i.Title }}</h4>
+            <h6>Details : {{ i.Content }}</h6>
+            <h6>date & Time: {{ i.publish_date }}</h6>
+            <h6>Published?: {{ i.is_published }}</h6>
+   
+    {% endfor %}
+ 
+{% endif  %}    
+
+{% endblock %}

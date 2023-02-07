@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>  <strong>not ready only</strong> !</h2>
+
+    <div class="row">
+        {% for blog in not_ready_blog %}
+            <div class="col-3">
+                <div class="p-4 shadow" >
+                    <h4>{{ blog.Title }}</h4>
+                    <h6>Details : {{ blog.Content }}</h6>
+                    <h6>date & Time: {{ blog.publish_date }}</h6>
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+
+
+<div class="container">
+<h2>edit on POST</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <div class="mt-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="Title" class="form-control" value="{{ update_post.Title }}" />
+    </div>
+
+    <div class="mt-3">
+      <label class="form-label">Content</label>
+      <textarea class="form-control" name="Content">{{ update_post.Content }}</textarea>
+    </div>
+
+    <select name="is_published" class="form-select" aria-label="Default select example">
+        <option selected><strong>...</strong></option>
+        <option value="True" {% if update_post.is_published == True %} selected {% endif %}>yes</option>
+        <option value="True" {% if update_post.is_published == False %} selected {% endif %}>No</option>
+    </select>
+
+   
+    
+    <div class="mt-3">
+        <label class="form-label">publish_date</label>
+        <input type="datetime-local" value="{{ update_post.publish_date }}" class="form-control" name="publish_date"  />
+      </div>
+
+      <br/>
+      <input type="submit" class="btn btn-primary" value="Update POST" />
+
+    
+
+</form>
+
+</div>
+
+
+
+{% endblock %}
+
+
