@@ -11,7 +11,7 @@
         <div class="col-3">
             <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <a href="{% url 'blog:search_blog'%}"><h5 class="card-title">{{ blog.title }}</h5></a>
+                <a href="{% url 'blog:blog_detail' blog.id %}"><h5 class="card-title">{{ blog.title }}</h5></a>
                 <h6 class="card-subtitle mb-2 text-muted">
                 {% if blog.is_pubilshed %} 
                     Pubilshed
@@ -27,6 +27,4 @@
         {% endfor %}
 
 
-    </div>
-</div>
 {% endblock %}

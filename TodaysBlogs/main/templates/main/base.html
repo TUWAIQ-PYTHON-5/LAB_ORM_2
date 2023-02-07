@@ -1,7 +1,3 @@
-
-
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -17,7 +13,7 @@
         }
         </style>
 </head>
-
+{% load static %}
 {% if request.COOKIES.theme == "Dark" %}
 <body data-bs-theme="dark">
 {% else  %}
@@ -42,10 +38,11 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex m-2" action="" method="get">
-                    <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
-                    <a href="{% url 'blog:search_blog' %}"></a><button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <form class="d-flex m-2" action="{% url 'blog:search_blog' %}" method="POST">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </form> 
                 <form class="d-flex" role="search">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

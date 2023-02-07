@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from .models import Blog
 
+
+
 # Create your views here.
 
 def blog_page(request : HttpRequest):
@@ -55,9 +57,11 @@ def blog_detail(request : HttpRequest, blog_id):
 
     return render(request, "blog/blog_detail.html", {"blog" : blog})
 
-def search_blog(request : HttpRequest,search):
+def search_blog(request : HttpRequest):
+    if request.method == "POST":
+        search = request.POST['search']
+        search_blog = Blog.objects.filter(title__contains=search)
 
-    search_blog = Blog.objects.all().filter(title__contains=search)
-
-    context = {"search_blog" : search_blog}
-    return render(request, "blog/search_blog.html", context)
+        return render(request, "blog/search_blog.html", {'search_blog':search_blog}) 
+    else:
+        return render(request, "blog/search_blog.html", {})
