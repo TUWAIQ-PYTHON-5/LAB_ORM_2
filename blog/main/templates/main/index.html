@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title  %} Blogger {% endblock %}
+
+{% block content %}
+    Home Page
+
+    {% for post in posts %}
+        <div class="p-4 shadow rounded">
+            <h2>{{ post.title }}</h2>
+            <h5>{{ post.publish_date }}</h5>
+        </div>
+    {% endfor %}
+
+{% endblock %}
