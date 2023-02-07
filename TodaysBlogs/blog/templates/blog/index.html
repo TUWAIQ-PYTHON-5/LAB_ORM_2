@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Latest Blogs {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2> Latest Blogs !</h2>
+
+    <div class="row">
+        {% for blog in view_blogs %}
+            <div class="col-3">
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <a href="{% url 'blog:blog_detail' blog.id %}"><h5 class="card-title">{{ blog.title }}</h5></a>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    {% if blog.is_pubilshed %} 
+                      Pubilshed
+                    {% else %}
+                      Not Pubilshed
+                    {% endif %}
+                  </h6>
+                  <p class="card-text">Content: {{ blog.content }}</p>
+                  <p class="card-text">Published: {{ blog.publish_date }}</p>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+</div>
+{% endblock %}

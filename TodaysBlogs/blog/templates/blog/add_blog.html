@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Add a New Blog {% endblock %}
+
+{% block content %}
+
+<div class="container">
+<h2>Add a New Blog</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+        <div class="transbox">
+        <div class="row">
+            <div class="col" id = "box">
+                <input type="text" name="title" class="form-control m-2 text-dark" placeholder="Title"/>
+
+                <textarea class="form-control m-2" name="content" placeholder="Content"></textarea>
+
+                <select name="is_published" class="form-select m-2" aria-label="Default select example">
+                    <option selected >Is it published?</option>
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+            
+            <input type="date" name="publish_date" placeholder="Publish date" class= "m-2"/>
+
+            <br/>
+            <input type="submit" class="btn btn-dark m-2" value="New Blog" />
+        </div>
+    </div>
+  </div>
+    
+</form>
+
+</div>
+
+
+
+{% endblock %}
