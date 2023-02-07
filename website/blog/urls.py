@@ -10,7 +10,7 @@ urlpatterns = [
     path("delete/<blog_id>/", views.delete_blog, name="delete_blog"),
     path("latest/", views.latest_blog, name="latest_blog_page" ),
     path("details/<blog_id>/", views.blog_detail, name="blog_detail"),
-    path("search/", views.search, name="search"),
+    path("search/", views.search_blog, name="search_blog"),
 
 
 ]

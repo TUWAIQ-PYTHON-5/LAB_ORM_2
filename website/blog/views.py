@@ -72,12 +72,12 @@ def search(request : HttpRequest):
 
 
 
-def search(request : HttpRequest):
+def search_blog(request : HttpRequest):
     if request.method == "POST":
         search = request.POST['search']
         search_blog = Blog.objects.filter(title__contains=search)
 
-        return render(request, "blog/search.html", {'search':search}) 
+        return render(request, "blog/search.html", {'search_blog':search_blog}) 
     else:
         return render(request, "blog/search.html", {})
 
