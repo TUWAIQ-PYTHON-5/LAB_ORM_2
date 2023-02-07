@@ -1,0 +1,38 @@
+{%extends 'blog/base.html'%}
+{% load static %}
+
+
+{% block title %}
+
+Blogs
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+
+
+
+</style>
+
+
+
+<div class="container py-5">
+    <h2> Latest Blogs </h2>
+<hr>
+   {% for post in latest_blog %}
+    <div class="row ">
+        <div class="card" style="width: 900px; height: 200px;">
+            <div class="card-body" style="color: rgba(71, 71, 71, 0.996);">
+              <a href="{% url 'blog:blog details' post.id %}"> <h5 class="card-title">{{post.Title}}</h5></a>
+              <p class="card-text">{{post.Content}}</p>
+              <p>{{post.is_published}} Publish date: {{post.publish_date}}</p>
+            </div>
+          </div>
+    </div>
+    <br><br>
+       {% endfor %}
+
+
+{% endblock %}

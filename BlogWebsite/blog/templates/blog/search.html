@@ -1,0 +1,25 @@
+{%extends 'blog/base.html'%}
+{% load static %}
+
+
+{% block title %}
+Search for {{ blog.Title }} 
+{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h2> Searched Blog </h2>
+<hr>
+   {% for i in post %}
+    <div class="row ">
+        <div class="card" style="width: 900px; height: 200px;">
+            <div class="card-body" style="color: rgb(0, 0, 64);">
+              <h5 class="card-title">{{i.Title}}</h5>
+              <p class="card-text">{{i.Content}}</p>
+              <p>{{i.is_published}} Publish date: {{i.publish_date}}</p>
+            </div>
+          </div>
+    </div>
+       {% endfor %}
+
+
+{% endblock %}

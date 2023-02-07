@@ -1,0 +1,44 @@
+{%extends 'blog/base.html'%}
+{% load static %}
+
+
+{% block title %}
+Details for {{ blog.Title }} 
+{% endblock %}
+
+
+
+{% block content %}
+
+<style>
+
+
+</style>
+
+
+
+<br>
+<div class="container">
+
+    <hr>
+ 
+     <div class="row ">
+             <div class="card-body"><br><br><br><br>
+               <h5 class="card-title" style="color: rgba(8, 5, 20, 0.734);">{{blog.Title}}</h5><br>
+               <p class="card-text">{{blog.Content}}</p>
+               <p>{{blog.is_published}} Publish date: {{blog.publish_date}}</p>
+             </div>
+           </div>
+           <div class="m-3 d-flex gap-2"><a href="{% url 'blog:update_blog' blog.id %}" class="btn btn-secondary">update</a><a href="{% url 'blog:delete_blog' blog.id %}" class="btn btn-secondary">Delete</a></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

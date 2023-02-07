@@ -1,0 +1,90 @@
+{%extends 'blog/base.html'%}
+{% load static %}
+
+
+{% block title %}
+New Posts
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    
+
+  </style>
+
+  
+  <!-- Custom styles for this template -->
+  <link href="checkout.css" rel="stylesheet">
+</head>
+<body >
+  
+<div class="container">
+<main>
+  <div class="py-5 text-center">
+    <h1 class="lead">New blog post.</h1>
+  </div>
+
+  
+      
+      <form action=""  method="POST">
+        {% csrf_token %}
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="T" class="form-label">Title:</label>
+            <input name="Title" type="text" class="form-control" id="T" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Valid Title is required.
+            </div>
+          </div>
+
+          
+
+          <div class="col-12">
+            <label for="C" class="form-label">Content: </label>
+            <textarea class="form-control" name="Content" id="C" placeholder="Enter your blog content"></textarea>
+          </div>
+        
+
+        <hr class="my-4">
+
+        <h4 class="mb-3">Make it published</h4>
+
+        <div class="my-3">
+          
+          <div >
+            <input id="Y" name="is_published" type="radio" value="True" class="form-check-input" >
+            <label class="form-check-label" for="Y">YES</label>
+          </div>
+          <div >
+            <input id="N" name="is_published" type="radio" value="False" class="form-check-input" >
+            <label class="form-check-label" for="N">NO</label>
+          </div>
+        </div>
+    
+        <hr class="my-4">
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">New post</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+
+</div>
+
+
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
+{% endblock %}

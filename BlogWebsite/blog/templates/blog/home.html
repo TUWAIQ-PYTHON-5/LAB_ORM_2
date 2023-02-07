@@ -1,0 +1,40 @@
+{%extends 'blog/base.html'%}
+{% load static %}
+
+
+{% block title %}
+Tech blog
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+img{height:280px;
+width: 1164px;
+
+}
+.container{font-size: 100px;}
+
+</style>
+
+
+
+
+
+<div class="fluid">
+    <img  src="{%static 'images\tech.png'%}" alt="" width="72" height="57">
+</div>
+
+<div class="container ">
+
+<p>Our blog: The technology Is for Everyone.
+</p>
+</div>
+
+
+
+
+
+
+{% endblock %}
