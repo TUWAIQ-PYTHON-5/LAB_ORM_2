@@ -1,15 +1,28 @@
-{% extends "base.html" %} {% block title %} Bloggit {% endblock title %} 
-<h1 class="title" style="padding-left: 3rem;">Search results :</h1>
-<div class="blogs">
-  {% for post in post %}
-  <article class="blog">
-    <h3 class="title">{{ post.title }}</h3>
-    <p class="post">{{ post.content|slice:":200" }}...</p>
-    <a href="{% url 'post_detail' %}" class="button"
-      >Read More &rarr;</a
-    >
-  </article>
-  {% endfor %}
-</div>
+{% extends 'main/base.html' %}
 
-{% endif %} {% endblock content %}
+
+{% block content %}
+<div class="container">
+    <h2> Search for blog !</h2>
+
+    <div class="row">
+        {% for post in search_blog %}
+            <div class="col-3">
+                <div class="p-4 shadow" >
+                    <a href="{% url 'main:blog_detail' blog.id %}"><h4>{{ blog.title }}</h4></a>
+                
+                </div>
+            </div>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {% if post.is_pubilshed %} 
+                Pubilshed
+            {% else %}
+                Not Pubilshed
+            {% endif %}
+            </h6>
+            <p class="card-text">Content: {{ blog.content }}</p>
+            <p class="card-text">Published: {{ blog.publish_date }}</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

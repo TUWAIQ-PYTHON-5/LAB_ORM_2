@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect 
 from django.http import HttpRequest, HttpResponse
-from .models import  Post , Blog
-from django.db.models import Q 
+from .models import Post
 from django.views.generic import TemplateView, ListView
 
 
@@ -31,17 +30,17 @@ def latest_blog(request : HttpRequest):
 
     display = int(request.GET.get("display", 10))
 
-    latest_blog = Blog.objects.all()
+    latest_blog = Post.objects.all()
 
     context = {"latest_blog" : latest_blog}
-    return render(request, "blog/index.html", context)
+    return render(request, "main/index.html", context)
 
 
 
 def update_blog(request : HttpRequest, blog_id):
 
-    blog = Blog.objects.get(id=blog_id)
-    blog.publish_date = blog.publish_date.isoformat #to make it compatible with input value in html
+    blog = Post.objects.get(id=blog_id)
+    blog.publish_date = blog.publish_date.isoformat #what ???????
     if request.method == "POST":
         blog.title = request.POST["title"]
         blog.content = request.POST["content"]
@@ -49,25 +48,40 @@ def update_blog(request : HttpRequest, blog_id):
         blog.publish_date = request.POST["publish_date"]
 
         blog.save()
-        return redirect("blog:post_datail")
+        return redirect("main:latest_blog_page")
 
-    return render(request, "blog/update.html", {"blog" : blog})
+    return render(request, "main/update.html", {"main" : blog})
 
 
 
 def blog_detail(request : HttpRequest, blog_id):
 
-    blog = Blog.objects.get(id=blog_id)
+    blog = Post.objects.get(id=blog_id)
 
-    return render(request, "blog/blog_detail.html", {"blog" : blog})
+    return render(request, "main/detail.html", {"main" : blog})
+
+
+def delete_blog(request : HttpRequest, blog_id):
+    blog = Post.objects.get(id=blog_id)
+    blog.delete()
+    return redirect("main:latest_blog_page")
+
+
+
+def search(request : HttpRequest):
+
+    search1 = Post.objects.filter(name="")
+
+    context = {"search" : search}
+    return render(request, "main/top_games.html", context)
 
 
 
 def search_blog(request : HttpRequest):
     if request.method == "POST":
         search = request.POST['search']
-        search_blog = Blog.objects.filter(title__contains=search)
+        search_blog = Post.objects.filter(title__contains=search)
 
-        return render(request, "blog/search.html", {'search_blog':search_blog}) 
+        return render(request, "main/search.html", {'search_blog':search_blog}) 
     else:
-        return render(request, "blog/search.html", {})
+        return render(request, "main/search.html", {})
