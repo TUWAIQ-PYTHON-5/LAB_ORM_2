@@ -52,12 +52,12 @@ def delete_page(request : HttpRequest, subject_id):
     return redirect("subjects:read_page")
     
 def search_page(request : HttpRequest):
+    
+    if request.method == 'GET':
+        search = request.GET.get("search")
+        result_search = Subject.objects.filter(title__icontains=search)  
 
-    if request.method == "POST":
-        search = request.POST.get("search")
-        result_search = Subject.objects.filter(title__icontains=search)
-        
-        return render(request,"subjects/subject_details.html", {"result_search" : result_search})
+        return render(request,"subjects/result_search.html", {"result_search" : result_search})
 
 
 
