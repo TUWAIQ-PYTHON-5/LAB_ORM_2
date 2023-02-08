@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from .models import Post
+
 # Create your views here.
 
 def index(request : HttpRequest):
@@ -9,7 +10,6 @@ def index(request : HttpRequest):
     context = {"posts" : posts}
 
     return render(request, "main/index.html", context)
-
 
 
 def add_post(request : HttpRequest):
@@ -22,6 +22,17 @@ def add_post(request : HttpRequest):
 
     return render(request, "main/add_post.html")
 
+def light(request : HttpRequest):
+    response = redirect("main:index_page")
+    response.set_cookie("mode", "light", max_age=60*60*24*7)
+
+    return response
+
+def dark(request : HttpRequest):
+    response = redirect("main:index_page")
+    response.set_cookie("mode", "dark", max_age=60*60*24*7)
+
+    return response
 
 def blog_details(request : HttpRequest, blog_id):
     blog = Post.objects.get(id = blog_id)
