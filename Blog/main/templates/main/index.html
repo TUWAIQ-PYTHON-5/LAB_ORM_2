@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block title  %} Blogger {% endblock %}
+
+{% block content %}
+    
+
+    {% for post in posts %}
+        <div class="p-4 shadow rounded">
+            <a href="{% url 'main:blog_detail' post.id %}"><h2>{{ post.title }}</h2></a>
+            <h6>Release on:{{ post.publish_date }}</h6>
+            <h6> Rating: {{ post.rating }}</h6>
+        </div>
+    {% endfor %}
+
+{% endblock %}
