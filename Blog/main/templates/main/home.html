@@ -32,7 +32,7 @@ body, html {
 
 .bgimg-2 {
   background-image: url("{% static 'images/posts1.jpg' %}");
-  min-height: 400px;
+  min-height: 100%;
 }
 
 
@@ -55,19 +55,20 @@ body, html {
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="#Posts" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> READ POSTS </a>
-    <a href="#Addpost" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> ADD POST </a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+    <a href="{% url 'main:home_page' %}#home" class="w3-bar-item w3-button">HOME</a>
+    <a href="{% url 'main:home_page' %}#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
+    <a href="{% url 'main:home_page' %}#posts" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> READ POSTS </a>
+    <a href="{% url 'main:home_page' %}#addpost" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> ADD POST </a>
+    <form action="" method="get">
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
     </a>
   </div>
 
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
     <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="#Posts" class="w3-bar-item w3-button" onclick="toggleFunction()"> READ POSTS</a>
-    <a href="#Addpost" class="w3-bar-item w3-button" onclick="toggleFunction()">ADD POSTS </a>
+    <a href="#posts" class="w3-bar-item w3-button" onclick="toggleFunction()"> READ POSTS</a>
+    <a href="#pddpost" class="w3-bar-item w3-button" onclick="toggleFunction()">ADD POSTS </a>
     <a href="#" class="w3-bar-item w3-button">SEARCH</a>
   </div>
 </div>
@@ -75,52 +76,52 @@ body, html {
 <!-- First Logo  -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">HEALTHY <span class="w3-hide-small">LIFE</span> TIPS </span>
+    <span class="w3-center w3-padding-large w3-light-grey w3-xlarge w3-wide w3-animate-opacity">HEALTHY <span class="w3-hide-small">LIFE</span> TIPS </span>
   </div>
 </div>
 {% block content %}
 <!--  (About Section) -->
-<div class="w3-co
-ntent w3-container w3-padding-64" id="about">
+<div class="w3-content w3-container w3-padding-64" id="about">
   <h3 class="w3-center">ABOUT ME</h3>
   <p class="w3-center"><em> Healthy LifeStyle </em></p>
   <p> Our favorite health blogs that help empower people to find customized, targeted ways to nourish bodies and minds, just like we do.
-    If you're looking for inspiration on how to cook healthy meals, get in the best shape of your life, and improve your mental well being, these are the blogs you need to be reading. You can also share with us your healthy lifestyle</p>
+    If you're looking for inspiration on how to cook healthy meals, get in the best shape of your life, and improve your mental well being, 
+    these are the blogs you need to be reading. You can also share with us your healthy lifestyle</p>
 
 
 
 <!-- Second  Image  -->
 <div class="bgimg-2 w3-display-container w3-opacity-min w3-padding-large">
   <div class="w3-display-middle">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"> POSTS </span>
+    <span class="w3-center w3-padding-large w3-light-grey w3-xlarge w3-wide w3-animate-opacity"> POSTS </span>
   </div>
 </div>
 
 <!-- Container ( Read Post Section) -->
 
 
-<div class="w3-content w3-container w3-padding-64" id="Posts">
+<div class="w3-content w3-container w3-padding-64" id="posts">
     <h4 class="w3-center"> Here are some of published posts . </h4><br><br>
 
 <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
- {% for Post in posts %}
 
 <div class="row">
+  {% for post in posts %}
     <div class="col-sm-6 mb-3 mb-sm-0">
       <div class="card ">
         <div class="card-body">
-          <h5 class="card-title">{{ post.title }} </h5>
+          <a href= "{% url 'main:post_detail' post.id  %}"><h5 class="card-title">{{ post.title }}</h5></a>
           <p class="card-text">{{ post.Content }}</p>
           <p class="card-text">{{ post.publish_date }}</p>
         </div>
       </div>
     </div>
+  {% endfor %}
   </div>
 
-  {% endfor %}
 
 <!--  (Add Posts Section) -->
-<div class="w3-content w3-container w3-padding-64" id="Addpost">
+<div class="w3-content w3-container w3-padding-64" id="addpost">
   <h3 class="w3-center"> ADD POSTS </h3>
   <p class="w3-center"><em>I'd love to see your lifestyle !</em></p>
 
@@ -134,7 +135,7 @@ ntent w3-container w3-padding-64" id="about">
             <input class="w3-input w3-border" type="text" name="title" placeholder="Title" >
             </div>
           <div class="w3-half">
-            <textarea class="w3-input w3-border " name="content"> </textarea>
+            <textarea class="w3-input w3-border" name="content"placeholder="Content"> </textarea>
           </div>
         </div>
         <select class="w3-input w3-border" name="is_published">
