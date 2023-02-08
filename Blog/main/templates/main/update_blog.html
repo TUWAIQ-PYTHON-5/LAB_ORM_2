@@ -13,7 +13,7 @@
 
     <div class="mt-3">
       <label class="form-label">Title</label>
-      <input type="text" name="title" class="form-control" value="{{ blog.title }}" />
+      <input type="text" name="title" class="form-control" value= '{{ blog.title }}' />
     </div>
 
     <div class="mt-3">
@@ -30,10 +30,10 @@
 
       <br/>
 
-      <input type="date" name="publish_date" placeholder="Publish date" class= "m-2" value="Update blog" />
+      <input type="date" name="publish_date" placeholder="Publish date" class= "m-2" value="{{blog.publish_date}}"/>
 
       <br/>
-      <input type="submit" class="btn btn-dark m-2" value="New Blog" />
+      <input type="submit" class="btn btn-dark m-2" value="update" />
     
 
 </form>
