@@ -29,17 +29,16 @@
         </div>
 
         
-        <select name="is_published" value="{{post.is_published}}" class="form-select">
+        <select  name="is_published" class="form-select">
             <option  value="True" {% if post.is_published == True %} selected {% endif %}>Yes</option>
             <option  value="False" {% if post.is_published == False %} selected {% endif %}>No</option>
-            
         </select>
         
     </div>
     <br>
 
     <div class="">
-        <input type="submit" class="btn btn-primary" value="Update " />
+        <input type="submit" class="btn btn-primary" value="Update" />
         <a class="btn btn-secondary" href="{% url 'blog:blogs_page' %}" role="button">Back</a>
     </div>
   </form>

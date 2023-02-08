@@ -15,7 +15,7 @@
     </div>
  </div> -->
 
- {% if search_post %}
+
     {% for post in search_post %} 
        <div class="container">
 
@@ -25,12 +25,12 @@
             <p><h5>{{post.content}}</h5> </p>
 
             
+            
+            {% endfor %}
+        
+            {% endfor %}
             <a class="btn btn-secondary" href="{% url 'blog:blogs_page' %}" role="button">Back</a>
         </div>
-        
-    {% endfor %}
-    {% endif %}
-{% endfor %}
 {% endblock %}
 
  

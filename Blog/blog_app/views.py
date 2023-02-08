@@ -49,12 +49,12 @@ def post_update(request : HttpRequest , post_id ):
     if request.method == "POST":
        
             
-            post.title = request.POST["title"],
-            post.content = request.POST["content"],
-            post.is_published = request.POST['is_published'],
+            post.title = request.POST["title"]
+            post.content = request.POST["content"]
+            post.is_published = request.POST["is_published"]
             post.publish_date = request.POST["publish_date"]
-            post.save()
 
+            post.save()
             return redirect("blog:blogs_page")
     return render(request , "blogs/post_update.html" ,  {"post" : post})
 
@@ -71,9 +71,10 @@ def search(request : HttpRequest):
     if request.method == "GET": 
 
             post_name =  request.GET.get('search')      
-            search_post = Posts.objects.filter(title = post_name)
+            search_post = Posts.objects.filter(title__contains = post_name)
                
             return render(request , "blogs/search.html" , {"search_post" : search_post})
+
 
 
 
