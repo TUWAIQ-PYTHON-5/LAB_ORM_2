@@ -12,7 +12,7 @@ def update_blog(request:HttpRequest,blog_id):
         blog.publish_date = request.POST["publish_date"]
 
         blog.save()
-        return redirect("blog:add_blog_page")
+        return redirect("blog:read_blog_page")
 
     return render(request, "blog/update_blog.html", {"blog" : blog})
 
@@ -21,11 +21,6 @@ def update_blog(request:HttpRequest,blog_id):
 def home(request:HttpRequest):
     return render(request,'blog/base.html')
 
-def read_blog(request:HttpRequest):
-    read_blog = Blog.objects.all()
-
-    context = {"read_blog" :read_blog}
-    return render(request,"blog/index.html", context)
 
 def add_blog(request:HttpRequest):
     if request.method == "POST":
@@ -47,11 +42,17 @@ def update_blog(request:HttpRequest,blog_id):
         return redirect("blog:add_blog_page")
 
     return render(request, "blog/update_blog.html", {"blog" : blog})
-
 def delete_blog(request : HttpRequest, blog_id):
     blog = Blog.objects.get(id=blog_id)
     blog.delete()
     return redirect("blog:read_blog_page")
+def read_blog(request:HttpRequest):
+    read_blog = Blog.objects.all()
+
+    context = {"read_blog" :read_blog}
+    return render(request,"blog/index.html", context)
+
+
 def blog_detail(request : HttpRequest, blog_id):
 
     blog = Blog.objects.get(id=blog_id)
