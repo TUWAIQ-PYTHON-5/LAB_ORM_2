@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2> Top Posts !</h2>
+    <div class="row">
+        {% for post in top_posts %}
+            <div class="col-3">
+                <div class="p-4 shadow" >
+                    <a href="{% url 'main:post_detail' Post.id %}"><h4>{{ Post.title }}</h4></a>
+                    <h6>Release on: {{ Post.publish_date }}</h6>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
