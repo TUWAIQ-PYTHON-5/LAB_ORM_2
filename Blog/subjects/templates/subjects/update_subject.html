@@ -1,0 +1,41 @@
+{% extends 'subjects/base.html' %}
+{% block title %}Edit Subject | {{ subject.title }}{% endblock %}
+
+
+{%block content%}
+<div class="container ">
+    <form  action="" method="POST">
+        {% csrf_token %}
+        <div class="position-absolute top-50 start-50 translate-middle " style="width: 720px;">  
+            <label class="form-label">Title</label>
+            <input value="{{subject.title}}" class="form-control mb-4" type="text" name="title" />
+                
+            <label class="form-label">Content</label>
+            <textarea class="form-control mb-4" name="content">{{ subject.content }}</textarea>
+            
+            <fieldset class="row mb-3" >
+                <legend class="col-form-label col-sm-2 pt-0" >Is Published</legend>
+                <div class="col-sm-10 ">
+
+                    <input value="{{subject.is_published}}"{% if subject.is_published == 'True' %} selected {% endif %} class="form-check-input"  type="radio" name="is_published" id="True" value="True" checked>
+                    <label class="form-check-label" for="true">True</label>
+                    
+                    <input value="{{subject.is_published}}"{% if subject.is_published == 'False' %} selected {% endif %} class="form-check-input ms-5" type="radio" name="is_published" id="False" value="False">
+                    <label class="form-check-label" for="false">False</label>
+                    
+                </div>
+            </fieldset>
+            
+            
+            <label class="form-label">Publish Date</label>
+            <input class="mb-4" type="date" name="published_date"  />
+            
+            <div class="d-grid gap-2 col-6 mx-auto ">
+                <input class="btn btn-primary me-5 ms-5" type="submit" value="Save Subject" />
+            </div>
+
+        </div>
+
+    </form>
+</div>
+{% endblock %}
