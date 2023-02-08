@@ -1,0 +1,19 @@
+
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="comtainer">
+<div class="row">
+   
+        <div class="col-3">
+            <div class="p-4 shadow" >
+                <h4>{{ show.title }}</h4>
+                <h6>Details : {{ show.content }}</h6>
+                <h6>date & Time: {{ show.publish_date }}</h6>
+                <h6>Published?: {{ show.is_published }}</h6>
+                <div class="m-3 d-flex gap-2"><a href="{% url 'main:update_post' show_post.id %}" class="btn btn-primary">update</a><a href="{% url 'main:Delete_post' show_post.id %}" class="btn btn-danger">delete</a></div>
+                
+            </div>
+        </div>
+    </div>
+ {% endblock %}
