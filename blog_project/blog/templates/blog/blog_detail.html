@@ -3,11 +3,12 @@
 {% block content %}
 
 <div class="container">
-{%block content %}
-    <h1>{{ game.title }}</h1>
-    <h6>Publish date :{{blg.publish_date}} </h6>
-    <div class="m-3 d-flex gap-2"><a href="{% url 'blog:update_blog' blog.id %}" class="btn btn-primary">update</a><a href="{% url 'blog:delete_blog' blog.id %}" class="btn btn-danger">delete</a></div>
-    <p>{{ blog.Content}}</p>
+    <h1>{{ blog.Title }}</h1>
+<div class="m-3 d-flex gap-2"><a href="{% url 'blog:update_blog' blog.id %}" class="btn btn-primary">update</a> <a href="{% url 'blog:delete_blog' blog.id %}" class="btn btn-danger">delete</a>
+    
+    <p>{{ blog.Content}}</p><br>
+   <p> {{blog.is_pubilshed}}</p>
+
 
 </div>
 

@@ -10,7 +10,6 @@
     <div class="container">
         <h2 class="text-center text-primary">Update blog . . .</h2>
       
-        {{blog}}
         <form action="" method="POST">
             {% csrf_token %}
         <div class="container text-secondary">
@@ -21,25 +20,25 @@
             <label class="form-label">Content</label>
             <textarea class="form-control" name="Content">{{blog.Content}}</textarea>
         </div>
+        <div class="container">
+        <label class="form-label">Is publish</label>
         <select name="is_published" class="form-control" value="{{blog.is_published}}">
-            <option value="True" {% if blog.is_published== True %}>Yes</option>
-            <option value="False"{% if blog.is_published== False %}>No</option>
+            <option value="True" >Yes</option>
+            <option value="False">No</option>
         </select>
             </div>
              
        <div class="container">
         <label class="form-label">Publish date</label>
-          <div class="container text-secondary border-secondary">
-            <input type="date" value="{{blog.publish_date}}" name="publish_date" class="text-secondary "  />
-          </div>
+        <div class="container text-secondary border-secondary">
+        <input type="date" value="{{blog.publish_date}}" name="publish_date" class="text-secondary "  />
+        </div>
        </div>
             <br/>
-    
-            
               <div class="container">
               <input type="submit" class="btn btn-primary" value=" Update blog" />
               </div>
-        
+            </div>
             
         
         </form>

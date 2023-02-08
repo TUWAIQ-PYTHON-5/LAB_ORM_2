@@ -4,18 +4,33 @@
 
 
     {% block title %} search title {% endblock %}
-    
+    {% block content %}
     <div class="row">
-      {% if search_title %}
-      <h2> You searched for {{search_title}}</h2><br>
-      {% for search in searches %}
-      <a href="{% url 'blog:add_blog' blog.id %}">{{search}}</a><br>
-      {% endfor %}
+      {% if  searched %}
+      <div class="container text-center text-dark">
+      <h3> You searched for {{searched}}</h3><br>
+      </div>
+      {% for x in search_blog %}
+      <div class="container-fluid">
+        <div class="card text-dark bg-primary mb-3">
+            <div class="card-body card-secondary">
+              <h5 class="card-title">{{x.Title}}</h5>
+              <p class="card-text">{{x.Content}}</p>
+              <p>{{x.is_published}} Publish date: {{x.publish_date}}</p>
+            </div>
+          </div>
+    </div>
+       {% endfor %}
+    
       {% else %}
-      <h2> You forgot to search Title...</h2>
+      <h2> You forgot to search...</h2>
       <div class="col-3">
       
       {% endif %}
+      <div class="containers">
+        
+        {% endblock %}
+      </div>
 
 
   </div>
