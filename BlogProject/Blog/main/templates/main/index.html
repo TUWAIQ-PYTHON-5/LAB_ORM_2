@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title  %} Blogger {% endblock %}
+
+<style>
+    body {
+      background-image: url('static/images/1.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }   
+</style>
+
+
+{% block content %}
+    Home Page
+    {% for Post in Posts %}
+        <div class="p-4 shadow rounded" >
+            <a href="{% url 'main:post_detail' Post.id %}"><h4>{{ Post.title }}</h4></a> 
+            <h5>{{ Post.content}}</h5>
+            <h5>{{ Post.publish_date }}</h5>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+

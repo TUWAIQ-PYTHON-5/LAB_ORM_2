@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Details for {{ Posts.title }}  {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>{{ Posts.title }}</h1>
+    <h6>Relased on: {{ Posts.publish_date}}</h6>
+    <div class="m-3 d-flex gap-2"><a href="{% url 'main:update_post' Posts.id %}" class="btn btn-primary">update</a><a href="{% url 'main:delete_post' Posts.id %}" class="btn btn-danger">delete</a></div>
+    <p>{{ Posts.content }}</p>
+</div>
+{% endblock %}
+
+
