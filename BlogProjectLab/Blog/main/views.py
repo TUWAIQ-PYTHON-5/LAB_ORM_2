@@ -15,7 +15,7 @@ def index(request : HttpRequest):
 def add_post(request : HttpRequest):
 
     if request.method == "POST":
-        new_post = Post(title=request.POST["title"], content= request.POST["content"], is_published= request.POST["is_published"])
+        new_post = Post(title=request.POST["title"], content= request.POST["content"], is_published= request.POST["is_published"],publish_date= request.POST["publish_date"])
         new_post.save()
 
         return redirect("main:index_page")
@@ -28,6 +28,8 @@ def update_blog( request:HttpRequest,blog_id):
         blogar.title=request.POST["title"]
         blogar.content=request.POST["content"]
         blogar.is_published=request.POST["is_published"]
+        blogar.publish_date=request.POST["publish_date"]
+
         
         blogar.save()
         return redirect("main:latest_blog_page")
@@ -51,4 +53,4 @@ def plog_detail(request : HttpRequest, plog_id):
 
 
 
-    return render(request, "main/plog_detail.html", {"blogar" : blogar})
+    return render(request, "main/plog_detail.html", {"blogar" :blogar})
