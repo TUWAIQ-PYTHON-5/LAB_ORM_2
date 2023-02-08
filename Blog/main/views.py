@@ -22,6 +22,8 @@ def add_post(request : HttpRequest):
 
     return render(request, "main/add_post.html")
 
+    
+
 def blog_details(request : HttpRequest, blog_id):
     blog = Post.objects.get(id = blog_id)
 
