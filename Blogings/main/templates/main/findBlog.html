@@ -7,11 +7,11 @@
     <h2> The Results for {{toFind}}</h2>
     {% endif %}
     <div class="row">
-        {% for blog in findBlog %}
+        {% for blog in result %}
             
             <div class="col-3">
                 <div class="p-4 shadow" >
-                    <a href="{% url 'main:findBlog' blog.id %}"><h4>{{ blog.title }}</h4></a>
+                    <a href="{% url 'main:blogDetail' blog.id %}"><h4>{{ blog.title }}</h4></a>
                     <p>{{ blog.content }}</p>
                     <h6>Date: {{ blog.writingDate }}</h6>
                 </div>
