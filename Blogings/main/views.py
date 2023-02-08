@@ -36,12 +36,12 @@ def blogDetail(request : HttpRequest, blog_id):
 def deleteBlog(request : HttpRequest, blog_id):
     blog = Blog.objects.get(id=blog_id)
     blog.delete()
-    return redirect("games:latest_games_page")
+    return redirect("main:leatestBlogs")
 ##################################################################
 def findBlog(request : HttpRequest):
     if request.method == "POST":
         toFind = request.POST['toFind']  
-        result = Blog.objects.filter(title__contains=toFind)
-        return render(request, "main/findBlog.html", {'toFind' : toFind, 'result' : result})
+        result = Blog.objects.filter(title__contains=request.POST['toFind'] )
+        return render(request, "main/findBlog.html", {'toFind' : toFind , 'result' : result})
     else:
         return render(request, "main/findBlog.html", {'toFind' : toFind})
