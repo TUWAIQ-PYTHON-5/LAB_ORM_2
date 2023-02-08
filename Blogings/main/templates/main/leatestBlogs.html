@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <h2> Latest Blogs !</h2>
+
+    <div class="row">
+        {% for blog in leatestBlogs %}
+            
+            <div class="col-3">
+                <div class="p-4 shadow" >
+                    <a href="{% url 'main:blogDetail' blog.id %}"><h4>{{ blog.title }}</h4></a>
+                    <p>{{ blog.content }}</p>
+                    <h6>Date: {{ blog.writingDate }}</h6>
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+</div>
+{% endblock %}

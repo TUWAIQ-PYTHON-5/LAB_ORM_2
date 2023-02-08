@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+<div class="container">
+    {% if toFind %}
+    <h2> The Results for {{toFind}}</h2>
+    {% endif %}
+    <div class="row">
+        {% for blog in findBlog %}
+            
+            <div class="col-3">
+                <div class="p-4 shadow" >
+                    <a href="{% url 'main:findBlog' blog.id %}"><h4>{{ blog.title }}</h4></a>
+                    <p>{{ blog.content }}</p>
+                    <h6>Date: {{ blog.writingDate }}</h6>
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+</div>
+{% endblock %}

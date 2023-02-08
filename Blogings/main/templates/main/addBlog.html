@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Bloging {% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+<h2>Write Your words</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <label class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" />
+
+    <label class="form-label">content</label>
+    <textarea class="form-control" name="content"></textarea>
+
+    <label class="form-label">Publishing</label>
+    <select name="isPublish" class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="True">Yes</option>
+        <option value="False">No</option>
+      </select>
+    
+
+      <br/>
+      <input type="submit" class="btn btn-primary" value="newBlog" />
+
+</form>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Update a Blog {% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+<h2>Update a Blog</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <div class="mt-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" value="{{ blog.title }}" />
+    </div>
+
+    <div class="mt-3">
+      <label class="form-label">content</label>
+      <textarea class="form-control" name="content">{{ blog.content }}</textarea>
+    </div>
+
+    <label class="form-label">Publishing</label>
+    <select name="isPublish" class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="True">Yes</option>
+        <option value="False">No</option>
+      </select>
+
+      
+      <br/>
+      <input type="submit" class="btn btn-primary" value="Update Blog" />
+
+    
+
+</form>
+
+</div>
+
+
+
+{% endblock %}
