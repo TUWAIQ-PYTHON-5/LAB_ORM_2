@@ -21,10 +21,10 @@ def updateBlog(request : HttpRequest, blog_id):
     blog = Blog.objects.get(id=blog_id)
     blog.writingDate = blog.writingDate.isoformat #to make it compatible with input value in html
     if request.method == "POST":
-        Blog.title = request.POST["title"]
-        Blog.content = request.POST["content"]
-        Blog.isPublish = request.POST["isPublish"]
-        Blog.writingDate= request.POST["writingDate"]
+        blog.title = request.POST["title"]
+        blog.content = request.POST["content"]
+        blog.isPublish = request.POST["isPublish"]
+        blog.writingDate= request.POST["writingDate"]
         blog.save()
         return redirect("main:leatestBlogs")
     return render(request, "main/updateBlog.html", {"blog" : blog})
@@ -43,6 +43,5 @@ def findBlog(request : HttpRequest):
         toFind = request.POST['toFind']  
         result = Blog.objects.filter(title__contains=toFind)
         return render(request, "main/findBlog.html", {'toFind' : toFind, 'result' : result})
-    
     else:
         return render(request, "main/findBlog.html", {'toFind' : toFind})
