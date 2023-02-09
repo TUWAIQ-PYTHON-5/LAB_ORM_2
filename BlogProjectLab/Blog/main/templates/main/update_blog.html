@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %} Add a New blog {% endblock %}
+
+
+
+
+{% block content %}
+
+<div>
+    <h1> Add New update post</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+ 
+        <div class="mt-3">
+            <label>Title</label>
+            <input type="text" class="form-control" name="title" value="{{post.title}}" />
+        </div>
+        <label>Content</label>
+        <textarea name="content" class="form-control">{{post.content}}</textarea>
+
+        <label>Is Published</label>
+        <select name="is_published" class="form-control">
+            <option value="True" {% if game.rating == 1 %} selected {% endif %}>Yes</option>
+            <option value="False" {% if game.rating == 2 %} selected {% endif %}>No</option>
+        </select>
+         <div>
+            <input type="submit"><a href="" class="btn btn-primary" value="Create update Post" />
+
+         </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
