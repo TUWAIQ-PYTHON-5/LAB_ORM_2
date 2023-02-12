@@ -31,11 +31,12 @@ def blog_detail(request:HttpRequest, blog_id):
 def update_blog(request : HttpRequest, blog_id):
 
     blog = Blog.objects.get(id=blog_id)
-    blog.publish_date = blog.publish_date.isoformat 
+    blog.publish_date = blog.publish_date.isoformat
     if request.method == "POST":
-        blog.title = request.POST["Title"]
+        blog.Title = request.POST["Title"]
         blog.Content = request.POST["Content"]
         blog.is_published = request.POST["is_published"]
+        blog.publish_date=request.POST["publish_date"]
         
 
         blog.save()
