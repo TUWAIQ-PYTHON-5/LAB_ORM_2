@@ -1,0 +1,37 @@
+{% block title %} Update Blog {% endblock %}
+
+{% block content %}
+
+<div class="container">
+<h2>Updating Blog</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+        <div class="transbox">
+        <div class="row">
+            <div class="col" id = "box">
+                <input type="text" name="title" class="form-control m-2 text-dark" placeholder="Title" value="{{ blog.title }}"/>
+
+                <textarea class="form-control m-2" name="content" placeholder="Content">{{ blog.content }}</textarea>
+
+                <select name="is_published" value="{{blog.is_published}}" class="form-select m-2" aria-label="Default select example">
+                    <option selected >Is it published?</option>
+                    <option value="True" {% if blog.is_published = True %} selected {% endif %}>Yes</option>
+                    <option value="False" {% if blog.is_published = False %} selected {% endif %}>No</option>
+                </select>
+            
+            <input type="date" name="publish_date" value="{{ blog.publish_date }}" placeholder="Publish date" class= "m-2"/>
+
+            <br/>
+            <input type="submit" class="btn btn-dark m-2" value="Update Blog" />
+        </div>
+    </div>
+  </div>
+    
+</form>
+
+</div>
+
+
+
+{% endblock %}

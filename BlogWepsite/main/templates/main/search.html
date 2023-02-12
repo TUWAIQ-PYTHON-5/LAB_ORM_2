@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <h2> Search for blog !</h2>
+
+    <div class="row">
+        {% for post in search_blog %}
+            <div class="col-3">
+                <div class="p-4 shadow" >
+                    <a href="{% url 'main:blog_detail' blog.id %}"><h4>{{ blog.title }}</h4></a>
+                
+                </div>
+            </div>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {% if post.is_pubilshed %} 
+                Pubilshed
+            {% else %}
+                Not Pubilshed
+            {% endif %}
+            </h6>
+            <p class="card-text">Content: {{ blog.content }}</p>
+            <p class="card-text">Published: {{ blog.publish_date }}</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
