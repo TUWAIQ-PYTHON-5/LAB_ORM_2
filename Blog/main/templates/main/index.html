@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+{% block title  %} Blogger {% endblock %}
+
+{% block content %}
+                                                <!-- beter use GET instead of POST like eng.agel -->
+        <form action="{% url 'main:search_page' %}" method="POST" class="d-flex" role="search" > 
+            {% csrf_token %}
+          <input class="form-control me-2" style="width: 300px;" type="search" name="searched" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+          <a href="{% url 'main:add_post'%}"><button type="button" style="margin-left: 900px;" class="btn btn-primary">New Post</button></a>
+
+        </form>
+      
+    Blogs
+
+    {% for post in posts %}
+        <div class="p-4 shadow rounded">
+            <a href="{% url 'main:details_page' post.id %}"><h4>{{ post.title }}</h4></a>
+            <h5>{{ post.publish_date }}</h5>
+        </div>
+    {% endfor %}
+
+    
+
+{% endblock %}
